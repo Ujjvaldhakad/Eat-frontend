@@ -21,12 +21,22 @@ const Navbar = () => {
     // use gsap for animatios
     useGSAP(() => {
         const tl = gsap.timeline();  //A timeline has been used so that each element plays one by one.
-        gsap.to(".navbar", {
-            backdropFilter: "blur(5px)",
-            scrollTrigger: {
-                trigger: "body",
-                start: "top -10",
-                toggleActions: "play reverse play reverse",
+        ScrollTrigger.create({
+            trigger: "body",
+            start: "top -10",
+
+            onEnter: () => {
+                gsap.to(".navbar", {
+                    backdropFilter: "blur(5px)",
+                    duration: 0.3,
+                });
+            },
+
+            onLeaveBack: () => {
+                gsap.to(".navbar", {
+                    backdropFilter: "blur(0px)",
+                    duration: 0.3,
+                });
             },
         });
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '@/components/Navbar'
 import { Tick } from '@/components/Icons'
+import Footer from '@/components/Footer'
 
 const page = () => {
 
@@ -106,6 +107,33 @@ const page = () => {
     }
   ];
 
+  const farmers = [
+    {
+      initials: "DR",
+      name: "Dana R.",
+      farm: "TWO RIVERS FARM",
+      location: "SONOMA COUNTY",
+      quote: "We pick the morning your box ships. Not the night before.",
+      color: "#e3432c",
+    },
+    {
+      initials: "MA",
+      name: "Miguel A.",
+      farm: "ALDER HOLLOW",
+      location: "WILLAMETTE VALLEY",
+      quote: "Roots and herbs stay in the ground until an order actually says otherwise.",
+      color: "#e99a28",
+    },
+    {
+      initials: "SK",
+      name: "Sarah K.",
+      farm: "BELL & BRAMBLE",
+      location: "SKAGIT VALLEY",
+      quote: "Peppers and greens, grown for flavor first — size was never the point.",
+      color: "#7fa46b",
+    },
+  ];
+
   return (
     <div>
       <Navbar />
@@ -194,7 +222,26 @@ const page = () => {
           <h1 className='h-sec3-title'>The people <br></br>behind the box</h1>
           <p className='h-sec3-des'>Six growers, no distributor. If a vegetable is in <br></br>your box, you can trace it to a name above.</p>
         </div>
+
+        <div className='s4-cards'>
+          {farmers.map((item, index) => (
+            <div className="s4-card" key={index}>
+              <div
+                className="initials"
+                style={{ backgroundColor: item.color }}
+              >
+                {item.initials}
+              </div>
+              <div className='s4-card-right'>
+                <h2 className='s4-card-title'>{item.name}</h2>
+                <p className='s4-card-farm'>{item.farm} · {item.location}</p>
+                <blockquote className='s4-card-quote'>"{item.quote}"</blockquote>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
+      <Footer />
     </div >
   )
 }
